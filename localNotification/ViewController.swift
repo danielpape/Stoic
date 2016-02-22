@@ -10,22 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var toolbar: UIToolbar!
+    
     @IBOutlet var wakePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestPermissionForNotifications()
-        scheduleLocalNotification(NSDate().dateByAddingTimeInterval(10))
-        // Do any additional setup after loading the view, typically from a nib.
+        self.tabBarController?.tabBar.hidden = true
+        toolbar.barTintColor = UIColor(red: 27/255, green: 27/255, blue: 27/255, alpha: 1)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func tapSetAlarmButton(sender: AnyObject) {
         setAlarm(4)
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func requestPermissionForNotifications(){
@@ -83,6 +83,19 @@ class ViewController: UIViewController {
     
     }
     
+    
+    @IBAction func tapWakeButton(sender: AnyObject) {
+        self.tabBarController?.selectedIndex = 0
+    }
+    
+    @IBAction func tapSleepButton(sender: AnyObject) {
+        self.tabBarController?.selectedIndex = 1
+    }
+    
+    @IBAction func tapSettingsButton(sender: AnyObject) {
+        self.tabBarController?.selectedIndex = 2
+    }
+
     
 
 }
